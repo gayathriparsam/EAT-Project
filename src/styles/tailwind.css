@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #FEFEFE; /* pure white with subtle warmth */
+    --color-foreground: #2C3E50; /* deep blue-gray */
+    --color-border: rgba(45, 125, 125, 0.12); /* teal border with low opacity */
+    --color-input: #FEFEFE; /* pure white with subtle warmth */
+    --color-ring: #2D7D7D; /* deep teal */
+    
+    /* Card Colors */
+    --color-card: #F8FAFA; /* barely-there teal tint */
+    --color-card-foreground: #2C3E50; /* deep blue-gray */
+    
+    /* Popover Colors */
+    --color-popover: #FEFEFE; /* pure white with subtle warmth */
+    --color-popover-foreground: #2C3E50; /* deep blue-gray */
+    
+    /* Muted Colors */
+    --color-muted: #F8FAFA; /* barely-there teal tint */
+    --color-muted-foreground: #6B7280; /* medium gray */
+    
+    /* Primary Colors */
+    --color-primary: #2D7D7D; /* deep teal */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #5A9B9B; /* lighter teal complement */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Destructive Colors */
+    --color-destructive: #EF4444; /* clear red */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #F4A261; /* warm amber */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Success Colors */
+    --color-success: #10B981; /* calming green */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #F59E0B; /* gentle amber */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error Colors */
+    --color-error: #EF4444; /* clear red */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    /* Surface Color */
+    --color-surface: #F8FAFA; /* barely-there teal tint */
+    
+    /* Text Colors */
+    --color-text-primary: #2C3E50; /* deep blue-gray */
+    --color-text-secondary: #6B7280; /* medium gray */
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .breathing-animation {
+    animation: breathe 3s ease-in-out infinite;
+  }
+  
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+  
+  .gentle-pulse {
+    animation: gentlePulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes gentlePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .voice-indicator {
+    animation: voiceRipple 1.8s ease-out infinite;
+  }
+  
+  @keyframes voiceRipple {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+}
