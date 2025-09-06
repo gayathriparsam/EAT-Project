@@ -1,3 +1,4 @@
+import React from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToTop from "./components/ScrollToTop";
 import NotFound from "./pages/NotFound";
