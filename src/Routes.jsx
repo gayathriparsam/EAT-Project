@@ -1,6 +1,6 @@
-import ErrorBoundary from "components/ErrorBoundary";
-import ScrollToTop from "components/ScrollToTop";
-import NotFound from "pages/NotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
+import ScrollToTop from "./components/ScrollToTop";
+import NotFound from "./pages/NotFound";
 import { BrowserRouter, Route, Routes as RouterRoutes } from "react-router-dom";
 import CommunityHub from './pages/community-hub';
 import Dashboard from './pages/dashboard';
