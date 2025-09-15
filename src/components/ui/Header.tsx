@@ -1,7 +1,6 @@
 import React from "react";
 import { Menu, Bell, User, Settings, LogOut } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
 import Button from "./Button";
 import Icon from "../AppIcon";
 

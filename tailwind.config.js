@@ -62,14 +62,15 @@ export default {
         'mono': ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        'gentle': '0 2px 4px rgba(45, 125, 125, 0.06)',
-        'elevated': '0 8px 24px rgba(45, 125, 125, 0.12)',
-        'soft': '0 4px 12px rgba(45, 125, 125, 0.08)',
+        'gentle': '0 2px 8px rgba(45, 125, 125, 0.08)',
+        'elevated': '0 12px 32px rgba(45, 125, 125, 0.15)',
+        'soft': '0 4px 16px rgba(45, 125, 125, 0.1)',
+        'glow': '0 0 24px rgba(45, 125, 125, 0.12)',
       },
       animation: {
-        'breathe': 'breathe 3s ease-in-out infinite',
-        'gentle-pulse': 'gentlePulse 2s ease-in-out infinite',
-        'voice-ripple': 'voiceRipple 1.8s ease-out infinite',
+        'breathe': 'breathe 4s ease-in-out infinite',
+        'gentle-pulse': 'gentlePulse 3s ease-in-out infinite',
+        'voice-ripple': 'voiceRipple 2s ease-out infinite',
       },
       transitionTimingFunction: {
         'therapeutic': 'cubic-bezier(0.4, 0, 0.2, 1)',
