@@ -55,11 +55,11 @@ const EntryCard = ({ entry, onEdit, onDelete, onShare }) => {
   };
 
   return (
-    <div className="bg-card rounded-xl p-6 shadow-gentle border border-border hover:shadow-elevated transition-all duration-300 group">
+    <div className="bg-gradient-to-br from-card to-card/80 rounded-xl p-6 shadow-elevated border border-border/50 backdrop-blur-sm hover:shadow-glow transition-all duration-300 group" id={`entry-${entry?.id}`}>
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className={`p-2 rounded-lg ${getSentimentColor(entry?.sentiment)}`}>
+          <div className={`p-2 rounded-xl shadow-soft ${getSentimentColor(entry?.sentiment)} border border-current/20`}>
             <Icon name={getSentimentIcon(entry?.sentiment)} size={20} />
           </div>
           <div>
@@ -68,16 +68,17 @@ const EntryCard = ({ entry, onEdit, onDelete, onShare }) => {
                 {formatDate(entry?.date)}
               </span>
               {entry?.mood && (
-                <span className="px-2 py-1 bg-secondary/20 text-secondary rounded-full text-xs">
+                <span className="px-3 py-1 bg-secondary/30 text-secondary rounded-full text-xs border border-secondary/40 backdrop-blur-sm">
                   {entry?.mood}
                 </span>
               )}
             </div>
             <div className="flex items-center space-x-4 mt-1">
-              <span className="text-xs text-text-secondary">
-                {entry?.wordCount} words
+              <span className="text-xs text-text-secondary flex items-center space-x-1">
+                <Icon name="FileText" size={12} />
+                <span>{entry?.wordCount} words</span>
               </span>
-              <span className={`text-xs px-2 py-1 rounded-full ${getSentimentColor(entry?.sentiment)}`}>
+              <span className={`text-xs px-2 py-1 rounded-full ${getSentimentColor(entry?.sentiment)} border border-current/30`}>
                 {entry?.sentiment}
               </span>
             </div>
@@ -91,18 +92,18 @@ const EntryCard = ({ entry, onEdit, onDelete, onShare }) => {
             size="icon"
             onClick={() => setShowActions(!showActions)}
             iconName="MoreVertical"
-            className="opacity-0 group-hover:opacity-100 transition-opacity"
+            className="opacity-0 group-hover:opacity-100 transition-all hover:bg-primary/10"
           />
           
           {showActions && (
-            <div className="absolute right-0 mt-2 w-48 bg-popover border border-border rounded-lg shadow-elevated z-10">
+            <div className="absolute right-0 mt-2 w-48 bg-popover/95 backdrop-blur-md border border-border rounded-xl shadow-elevated z-10">
               <div className="py-2">
                 <button
                   onClick={() => {
                     onEdit(entry);
                     setShowActions(false);
                   }}
-                  className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-text-secondary hover:text-foreground hover:bg-muted"
+                  className="flex items-center space-x-3 w-full px-4 py-3 text-sm text-text-secondary hover:text-foreground hover:bg-primary/5 transition-all"
                 >
                   <Icon name="Edit" size={16} />
                   <span>Edit Entry</span>
@@ -112,20 +113,21 @@ const EntryCard = ({ entry, onEdit, onDelete, onShare }) => {
                     onShare(entry);
                     setShowActions(false);
                   }}
-                  className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-text-secondary hover:text-foreground hover:bg-muted"
+                  className="flex items-center space-x-3 w-full px-4 py-3 text-sm text-text-secondary hover:text-foreground hover:bg-primary/5 transition-all"
                 >
                   <Icon name="Share2" size={16} />
-                  <span>Share</span>
+                  <span>Share Entry</span>
                 </button>
+                <hr className="my-1 border-border/50" />
                 <button
                   onClick={() => {
                     onDelete(entry?.id);
                     setShowActions(false);
                   }}
-                  className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-error hover:bg-muted"
+                  className="flex items-center space-x-3 w-full px-4 py-3 text-sm text-error hover:bg-error/5 transition-all"
                 >
                   <Icon name="Trash2" size={16} />
-                  <span>Delete</span>
+                  <span>Delete Entry</span>
                 </button>
               </div>
             </div>
@@ -161,26 +163,45 @@ const EntryCard = ({ entry, onEdit, onDelete, onShare }) => {
         </div>
       )}
       {/* Footer Actions */}
-      <div className="flex items-center justify-between pt-4 border-t border-border">
-        <div className="flex items-center space-x-4">
-          <button className="flex items-center space-x-1 text-text-secondary hover:text-primary transition-colors">
-            <Icon name="Heart" size={16} />
-            <span className="text-sm">Like</span>
+      <div className="flex items-center justify-between pt-4 border-t border-border/50">
+        <div className="flex items-center space-x-6">
+          <button 
+            onClick={() => {
+              // Add like functionality
+              console.log('Liked entry:', entry.id);
+            }}
+            className="flex items-center space-x-2 text-text-secondary hover:text-primary transition-colors group"
+          >
+            <Icon name="Heart" size={16} className="group-hover:scale-110 transition-transform" />
+            <span className="text-sm">Appreciate</span>
           </button>
           <button 
             onClick={() => onShare(entry)}
-            className="flex items-center space-x-1 text-text-secondary hover:text-primary transition-colors"
+            className="flex items-center space-x-2 text-text-secondary hover:text-primary transition-colors group"
           >
-            <Icon name="Share2" size={16} />
+            <Icon name="Share2" size={16} className="group-hover:scale-110 transition-transform" />
             <span className="text-sm">Share</span>
+          </button>
+          <button 
+            onClick={() => {
+              // Add reflect functionality
+              console.log('Reflecting on entry:', entry.id);
+            }}
+            className="flex items-center space-x-2 text-text-secondary hover:text-primary transition-colors group"
+          >
+            <Icon name="MessageCircle" size={16} className="group-hover:scale-110 transition-transform" />
+            <span className="text-sm">Reflect</span>
           </button>
         </div>
         
-        <div className="text-xs text-text-secondary">
-          {new Date(entry.date)?.toLocaleTimeString('en-US', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-          })}
+        <div className="text-xs text-text-secondary flex items-center space-x-1">
+          <Icon name="Clock" size={12} />
+          <span>
+            {new Date(entry.date)?.toLocaleTimeString('en-US', { 
+              hour: '2-digit', 
+              minute: '2-digit' 
+            })}
+          </span>
         </div>
       </div>
       {/* Click overlay to close actions */}

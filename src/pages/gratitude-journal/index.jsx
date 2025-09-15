@@ -240,13 +240,14 @@ const GratitudeJournal = () => {
               </div>
               
               {/* View Toggle */}
-              <div className="flex items-center space-x-2 bg-muted rounded-lg p-1">
+              <div className="flex items-center space-x-1 bg-card/80 backdrop-blur-sm rounded-xl p-1 border border-border shadow-gentle">
                 <Button
                   variant={activeView === 'list' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setActiveView('list')}
                   iconName="List"
                   iconPosition="left"
+                  className="relative"
                 >
                   List
                 </Button>
@@ -256,6 +257,7 @@ const GratitudeJournal = () => {
                   onClick={() => setActiveView('calendar')}
                   iconName="Calendar"
                   iconPosition="left"
+                  className="relative"
                 >
                   Calendar
                 </Button>
@@ -265,6 +267,7 @@ const GratitudeJournal = () => {
                   onClick={() => setActiveView('stats')}
                   iconName="BarChart3"
                   iconPosition="left"
+                  className="relative"
                 >
                   Stats
                 </Button>
@@ -274,14 +277,14 @@ const GratitudeJournal = () => {
 
           {/* Inspirational Quote */}
           {showInspiration && (
-            <div className="mb-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6 border border-primary/20">
+            <div className="mb-8 bg-gradient-to-br from-primary/20 via-secondary/15 to-accent/10 rounded-xl p-6 border border-primary/30 backdrop-blur-sm">
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-4">
-                  <div className="p-2 bg-primary/20 rounded-full">
+                  <div className="p-3 bg-primary/30 backdrop-blur-sm rounded-full border border-primary/40">
                     <Icon name="Quote" size={20} className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-lg font-medium text-foreground mb-1">
+                    <p className="text-lg font-medium text-foreground mb-1 leading-relaxed">
                       "{getRandomQuote()}"
                     </p>
                     <p className="text-sm text-text-secondary">
@@ -294,7 +297,7 @@ const GratitudeJournal = () => {
                   size="icon"
                   onClick={() => setShowInspiration(false)}
                   iconName="X"
-                  className="text-text-secondary hover:text-foreground"
+                  className="text-text-secondary hover:text-foreground hover:bg-primary/10"
                 />
               </div>
             </div>
@@ -386,7 +389,7 @@ const GratitudeJournal = () => {
               <ProgressStats entries={entries} />
               
               {/* Recent Entries Preview */}
-              <div className="bg-card rounded-xl p-6 shadow-gentle border border-border">
+              <div className="bg-gradient-to-br from-card to-card/80 rounded-xl p-6 shadow-elevated border border-border/50 backdrop-blur-sm">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-heading font-semibold text-foreground">
                     Recent Entries
@@ -396,6 +399,7 @@ const GratitudeJournal = () => {
                     onClick={() => setActiveView('list')}
                     iconName="ArrowRight"
                     iconPosition="right"
+                    className="hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                   >
                     View All
                   </Button>
@@ -403,21 +407,31 @@ const GratitudeJournal = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {entries?.slice(0, 4)?.map((entry) => (
-                    <div key={entry?.id} className="p-4 bg-muted rounded-lg">
+                    <div key={entry?.id} className="p-4 bg-muted/60 backdrop-blur-sm rounded-lg border border-border/30 hover:bg-muted/80 transition-all cursor-pointer" onClick={() => {
+                      setActiveView('list');
+                      setTimeout(() => {
+                        const element = document.getElementById(`entry-${entry.id}`);
+                        element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }, 100);
+                    }}>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-medium text-foreground">
                           {new Date(entry.date)?.toLocaleDateString()}
                         </span>
                         <span className={`text-xs px-2 py-1 rounded-full ${
-                          entry?.sentiment === 'very positive' ? 'bg-green-100 text-green-700' :
-                          entry?.sentiment === 'positive'? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'
+                          entry?.sentiment === 'very positive' ? 'bg-success/20 text-success border border-success/30' :
+                          entry?.sentiment === 'positive'? 'bg-primary/20 text-primary border border-primary/30' : 'bg-muted text-text-secondary border border-border'
                         }`}>
                           {entry?.sentiment}
                         </span>
                       </div>
-                      <p className="text-sm text-text-secondary">
+                      <p className="text-sm text-text-secondary leading-relaxed">
                         {entry?.content?.substring(0, 100)}...
                       </p>
+                      <div className="flex items-center justify-between mt-3 text-xs text-text-secondary">
+                        <span>{entry?.wordCount} words</span>
+                        <span>Click to view</span>
+                      </div>
                     </div>
                   ))}
                 </div>

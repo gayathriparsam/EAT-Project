@@ -2,68 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Variables for Design System */
+/* CSS Variables for Design System - Enhanced Dark Theme */
 :root {
-  /* Color Variables - HSL values for theming */
-  --color-border: hsl(180, 47%, 47%);
-  --color-input: hsl(26, 37%, 98%);
+  /* Color Variables - Enhanced HSL values for better contrast */
+  --color-border: hsl(180, 47%, 35%);
+  --color-input: hsl(220, 15%, 95%);
   --color-ring: hsl(180, 47%, 30%);
-  --color-background: hsl(26, 37%, 98%);
-  --color-foreground: hsl(215, 25%, 27%);
+  --color-background: hsl(220, 15%, 96%);
+  --color-foreground: hsl(215, 25%, 20%);
   --color-primary: hsl(180, 47%, 30%);
   --color-primary-foreground: hsl(0, 0%, 100%);
-  --color-secondary: hsl(180, 20%, 85%);
+  --color-secondary: hsl(180, 25%, 75%);
   --color-secondary-foreground: hsl(0, 0%, 100%);
   --color-destructive: hsl(0, 70%, 60%);
   --color-destructive-foreground: hsl(0, 0%, 100%);
-  --color-muted: hsl(180, 15%, 97%);
-  --color-muted-foreground: hsl(215, 15%, 50%);
-  --color-accent: hsl(43, 75%, 60%);
+  --color-muted: hsl(220, 15%, 92%);
+  --color-muted-foreground: hsl(215, 15%, 45%);
+  --color-accent: hsl(43, 75%, 55%);
   --color-accent-foreground: hsl(0, 0%, 100%);
-  --color-popover: hsl(26, 37%, 98%);
-  --color-popover-foreground: hsl(215, 25%, 27%);
-  --color-card: hsl(180, 15%, 97%);
-  --color-card-foreground: hsl(215, 25%, 27%);
-  --color-success: hsl(142, 71%, 45%);
+  --color-popover: hsl(220, 15%, 94%);
+  --color-popover-foreground: hsl(215, 25%, 20%);
+  --color-card: hsl(220, 15%, 94%);
+  --color-card-foreground: hsl(215, 25%, 20%);
+  --color-success: hsl(142, 71%, 40%);
   --color-success-foreground: hsl(0, 0%, 100%);
-  --color-warning: hsl(43, 75%, 60%);
+  --color-warning: hsl(43, 75%, 55%);
   --color-warning-foreground: hsl(0, 0%, 100%);
   --color-error: hsl(0, 70%, 60%);
   --color-error-foreground: hsl(0, 0%, 100%);
-  --color-surface: hsl(180, 15%, 97%);
-  --color-text-primary: hsl(215, 25%, 27%);
-  --color-text-secondary: hsl(215, 15%, 50%);
+  --color-surface: hsl(220, 15%, 92%);
+  --color-text-primary: hsl(215, 25%, 20%);
+  --color-text-secondary: hsl(215, 15%, 45%);
 }
 
 .dark {
-  --color-border: hsl(180, 20%, 25%);
-  --color-input: hsl(215, 20%, 15%);
-  --color-ring: hsl(180, 47%, 70%);
-  --color-background: hsl(215, 28%, 10%);
-  --color-foreground: hsl(210, 40%, 98%);
-  --color-primary: hsl(180, 47%, 70%);
-  --color-primary-foreground: hsl(215, 28%, 10%);
-  --color-secondary: hsl(215, 15%, 20%);
-  --color-secondary-foreground: hsl(210, 40%, 98%);
-  --color-destructive: hsl(0, 62%, 30%);
-  --color-destructive-foreground: hsl(210, 40%, 98%);
-  --color-muted: hsl(215, 15%, 15%);
-  --color-muted-foreground: hsl(215, 20%, 65%);
+  --color-border: hsl(180, 25%, 30%);
+  --color-input: hsl(215, 20%, 18%);
+  --color-ring: hsl(180, 47%, 60%);
+  --color-background: hsl(215, 28%, 12%);
+  --color-foreground: hsl(210, 40%, 95%);
+  --color-primary: hsl(180, 47%, 60%);
+  --color-primary-foreground: hsl(215, 28%, 12%);
+  --color-secondary: hsl(215, 20%, 25%);
+  --color-secondary-foreground: hsl(210, 40%, 95%);
+  --color-destructive: hsl(0, 62%, 35%);
+  --color-destructive-foreground: hsl(210, 40%, 95%);
+  --color-muted: hsl(215, 20%, 18%);
+  --color-muted-foreground: hsl(215, 20%, 60%);
   --color-accent: hsl(43, 75%, 50%);
-  --color-accent-foreground: hsl(215, 28%, 10%);
-  --color-popover: hsl(215, 20%, 15%);
-  --color-popover-foreground: hsl(210, 40%, 98%);
-  --color-card: hsl(215, 15%, 15%);
-  --color-card-foreground: hsl(210, 40%, 98%);
+  --color-accent-foreground: hsl(215, 28%, 12%);
+  --color-popover: hsl(215, 20%, 18%);
+  --color-popover-foreground: hsl(210, 40%, 95%);
+  --color-card: hsl(215, 20%, 16%);
+  --color-card-foreground: hsl(210, 40%, 95%);
   --color-success: hsl(142, 71%, 35%);
-  --color-success-foreground: hsl(210, 40%, 98%);
+  --color-success-foreground: hsl(210, 40%, 95%);
   --color-warning: hsl(43, 75%, 50%);
-  --color-warning-foreground: hsl(215, 28%, 10%);
-  --color-error: hsl(0, 62%, 30%);
-  --color-error-foreground: hsl(210, 40%, 98%);
-  --color-surface: hsl(215, 15%, 15%);
-  --color-text-primary: hsl(210, 40%, 98%);
-  --color-text-secondary: hsl(215, 20%, 65%);
+  --color-warning-foreground: hsl(215, 28%, 12%);
+  --color-error: hsl(0, 62%, 35%);
+  --color-error-foreground: hsl(210, 40%, 95%);
+  --color-surface: hsl(215, 20%, 18%);
+  --color-text-primary: hsl(210, 40%, 95%);
+  --color-text-secondary: hsl(215, 20%, 60%);
 }
 
 /* Custom Keyframes - Enhanced with Better Opacity */
