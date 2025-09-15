@@ -2,7 +2,6 @@
   "name": "eat-emotional-support",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.10",
     "@radix-ui/react-slot": "^1.2.3",
@@ -18,6 +17,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.0.1",
     "framer-motion": "^10.16.4",
+    "lovable-tagger": "^1.1.9",
     "lucide-react": "^0.484.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
