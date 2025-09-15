@@ -1,8 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { Menu, Bell, User, Settings, LogOut } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Button from "./Button";
 import Icon from "../AppIcon";
+import ThemeToggle from "./ThemeToggle";
 
 export interface HeaderProps {
   title?: string;
@@ -12,17 +13,17 @@ export interface HeaderProps {
   onNotificationClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
+const Header = ({
   title,
   showNotifications = true,
   notificationCount = 0,
   onMenuClick,
   onNotificationClick
-}) => {
+}: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  const [showUserMenu, setShowUserMenu] = React.useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   
   const navigationItems = [
     { path: "/dashboard", label: "Dashboard", icon: "LayoutDashboard" },
@@ -75,23 +76,25 @@ const Header: React.FC<HeaderProps> = ({
           ))}
         </nav>
         
-        {/* Right section */}
-        <div className="flex items-center space-x-2">
-          {showNotifications && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onNotificationClick}
-              className="relative"
-            >
-              <Bell className="h-5 w-5" />
-              {notificationCount > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 bg-destructive text-destructive-foreground text-xs rounded-full flex items-center justify-center">
-                  {notificationCount > 9 ? '9+' : notificationCount}
-                </span>
-              )}
-            </Button>
-          )}
+          {/* Right section */}
+          <div className="flex items-center space-x-3">
+            <ThemeToggle />
+            
+            {showNotifications && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onNotificationClick}
+                className="relative"
+              >
+                <Bell className="h-5 w-5" />
+                {notificationCount > 0 && (
+                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-destructive text-destructive-foreground text-xs rounded-full flex items-center justify-center">
+                    {notificationCount > 9 ? '9+' : notificationCount}
+                  </span>
+                )}
+              </Button>
+            )}
           
           {/* User menu */}
           <div className="relative">
